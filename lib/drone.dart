@@ -1,7 +1,5 @@
-class Drone{
+class Drone {
   String name;
 
-  Drone({required this.name,}){}
-
-
+  Drone({required this.name});
 }

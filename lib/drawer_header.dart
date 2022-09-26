@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
 import 'map_live.dart';
 
-
 class HeaderDrawer extends StatefulWidget {
   const HeaderDrawer({super.key});
 
@@ -12,9 +11,6 @@ class HeaderDrawer extends StatefulWidget {
 }
 
 class _HeaderDrawerState extends State<HeaderDrawer> {
-
-  
-
   get mainAxisAlignment => null;
 
   @override
@@ -68,7 +64,7 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
                 DroneListView.addDrone();
                 //droneListView.addDrone();
               });
-              
+
               /*
               Navigator.push(
                 context,

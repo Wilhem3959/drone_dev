@@ -1,3 +1,5 @@
+import 'package:drone_dev/mapDrawing.dart';
+import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
@@ -45,7 +47,11 @@ class _DroneListViewState extends State<DroneListView> {
             child: Center(
               child: Expanded(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    print("Drone ${DroneListView.drones[index].name} selected");
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => MapDrawing()));
+                  },
                   child: Text(
                     DroneListView.drones[index].name,
                     style: TextStyle(color: Colors.white),
