@@ -1,6 +1,8 @@
+import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'drawer_header.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 void main() {
   runApp(
@@ -19,7 +21,7 @@ class _SettingsPageState extends State<DroneSettingsPage> {
   TimeOfDay selectedTime = TimeOfDay.now();
   DateTimeRange selectedDateRange = DateTimeRange(
     start: DateTime.now(),
-    end: DateTime.now().add(const Duration(days: 7)),
+    end: DateTime.now(),
   );
 
   TextStyle headingStyle = const TextStyle(
@@ -39,101 +41,112 @@ class _SettingsPageState extends State<DroneSettingsPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: const Color(0xFF0437F2),
-              secondary: const Color(0xFFD4AF37),
-              background: Colors.white),
-        ),
-        home: Scaffold(
-          appBar: AppBar(title: const Text("Drone: Name of drone settings")),
-          drawer: const HeaderDrawer(),
-          body: SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(12),
-              alignment: Alignment.center,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Sensors", style: headingStyle),
-                    ],
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSwatch().copyWith(
+            primary: const Color(0xFF0437F2),
+            secondary: const Color(0xFFD4AF37),
+            background: Colors.white),
+      ),
+      home: Scaffold(
+        appBar: AppBar(title: const Text("Drone: Name of drone settings")),
+        drawer: const HeaderDrawer(),
+        body: SingleChildScrollView(
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Sensors", style: headingStyle),
+                  ],
+                ),
+                ListTile(
+                  leading: const Icon(MdiIcons.bomb),
+                  title: const Text("EID Detection sensor"),
+                  trailing: Switch(
+                      value: lockAppSwitchVal,
+                      activeColor: const Color(0xFFD4AF37),
+                      onChanged: (val) {
+                        setState(() {
+                          lockAppSwitchVal = val;
+                        });
+                      }),
+                ),
+                const Divider(),
+                ListTile(
+                  leading: const Icon(MdiIcons.accessPointOff),
+                  title: const Text("Radio Jammer"),
+                  trailing: Switch(
+                      value: fingerprintSwitchVal,
+                      activeColor: const Color(0xFFD4AF37),
+                      onChanged: (val) {
+                        setState(() {
+                          fingerprintSwitchVal = val;
+                        });
+                      }),
+                ),
+                const Divider(),
+                ListTile(
+                  leading: const Icon(Icons.bolt),
+                  title: const Text("Electronic magnetic pulse"),
+                  trailing: Switch(
+                      value: changePassSwitchVal,
+                      activeColor: const Color(0xFFD4AF37),
+                      onChanged: (val) {
+                        setState(() {
+                          changePassSwitchVal = val;
+                        });
+                      }),
+                ),
+                const Divider(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text("Schedule", style: headingStyle),
+                  ],
+                ),
+                ListTile(
+                  leading: const Icon(Icons.access_time),
+                  title:
+                      Text("Time: ${selectedTime.hour}:${selectedTime.minute}"),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {
+                      _selectTime(context);
+                    },
                   ),
-                  ListTile(
-                    leading: const Icon(Icons.phonelink_lock_outlined),
-                    title: const Text("EID Detection sensor"),
-                    trailing: Switch(
-                        value: lockAppSwitchVal,
-                        activeColor: const Color(0xFFD4AF37),
-                        onChanged: (val) {
-                          setState(() {
-                            lockAppSwitchVal = val;
-                          });
-                        }),
+                ),
+                ListTile(
+                  leading: const Icon(Icons.calendar_today),
+                  title: selectedDateRange.end == selectedDateRange.start
+                      ? Text(
+                          "Date: ${selectedDateRange.start.toString().split(' ')[0]}")
+                      : Text(
+                          "Date: ${selectedDateRange.start.toString().split(' ')[0]} to ${selectedDateRange.end.toString().split(' ')[0]}"),
+                  trailing: IconButton(
+                    icon: const Icon(Icons.edit),
+                    onPressed: () {
+                      _show();
+                    },
                   ),
-                  const Divider(),
-                  ListTile(
-                    leading: const Icon(Icons.fingerprint),
-                    title: const Text("Radio Jammer"),
-                    trailing: Switch(
-                        value: fingerprintSwitchVal,
-                        activeColor: const Color(0xFFD4AF37),
-                        onChanged: (val) {
-                          setState(() {
-                            fingerprintSwitchVal = val;
-                          });
-                        }),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    leading: const Icon(Icons.lock),
-                    title: const Text("Electronic magnetic pulse"),
-                    trailing: Switch(
-                        value: changePassSwitchVal,
-                        activeColor: const Color(0xFFD4AF37),
-                        onChanged: (val) {
-                          setState(() {
-                            changePassSwitchVal = val;
-                          });
-                        }),
-                  ),
-                  const Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text("Schedule", style: headingStyle),
-                    ],
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.access_time),
-                    title: Text(
-                        "Time: ${selectedTime.hour}:${selectedTime.minute}"),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () {
-                        _selectTime(context);
-                      },
-                    ),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.calendar_today),
-                    title: Text(
-                        "Date: ${selectedDateRange.start.toString().split(' ')[0]} to ${selectedDateRange.end.toString().split(' ')[0]}"),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.edit),
-                      onPressed: () {
-                        _show();
-                      },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ));
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const MapLive()));
+          },
+          child: const Icon(MdiIcons.checkBold),
+        ),
+      ),
+    );
   }
 
   _selectTime(BuildContext context) async {
@@ -164,7 +177,6 @@ class _SettingsPageState extends State<DroneSettingsPage> {
     if (result != null) {
       setState(() {
         selectedDateRange = result;
-        print(selectedDateRange);
       });
     }
   }
