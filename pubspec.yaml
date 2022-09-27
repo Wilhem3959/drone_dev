@@ -43,6 +43,10 @@ dependencies:
   flutter_settings_screens: ^0.2.2+1
   hive: ^2.2.3
   flutter_launcher_icons: ^0.10.0
+  flutter_datetime_picker: ^1.5.1
+  date_time_picker: ^2.1.0
+  cr_calendar: ^1.0.0
+  date_range_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
