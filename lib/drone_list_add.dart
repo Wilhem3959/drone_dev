@@ -16,8 +16,8 @@ class DroneListAdd extends StatefulWidget {
     drones.add(Drone(name: _randomString(20)));
   }
 
-  static void test(String j) {
-    drones.add(Drone(name: j));
+  static void pullDrone(String nameDrone) {
+    drones.add(Drone(name: nameDrone));
   }
 
   static String _randomString(int length) {

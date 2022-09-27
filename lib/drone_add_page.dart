@@ -100,11 +100,16 @@ class _DroneAddPageState extends State<DroneAddPage> {
                 //need to add to both lists for add page and side bar
                 if (newDronen == null || newDronen.isEmpty) {
                 } else {
-                  //DroneListView.addDrone();
-                  setState(() {
-                    DroneListView.pullDrone(newDronen);
-                    DroneListAdd.test(newDronen);
-                  });
+                  String? tryPass = await passDialog();
+                  if (tryPass != null &&
+                      tryPass.isNotEmpty &&
+                      tryPass == '1234') {
+                    //DroneListView.addDrone();
+                    setState(() {
+                      DroneListView.pullDrone(newDronen);
+                      DroneListAdd.pullDrone(newDronen);
+                    });
+                  }
 
                   //DroneListAdd.addDrone();
                 }
@@ -133,9 +138,26 @@ class _DroneAddPageState extends State<DroneAddPage> {
                   onPressed: submit,
                 )
               ]));
+
+  Future<String?> passDialog() => showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+              title: Text('Password'),
+              content: TextField(
+                autofocus: true,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(hintText: 'Enter password'),
+                controller: controller,
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Submit'),
+                  onPressed: submit,
+                )
+              ]));
   void submit() {
     Navigator.of(context).pop(controller.text);
 
-    //controller.clear();
+    controller.clear();
   }
 }

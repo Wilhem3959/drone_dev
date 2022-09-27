@@ -38,6 +38,22 @@ class DroneScanView extends StatefulWidget {
 ///////////////////////////////////////////////
 
 class _DroneScanViewState extends State<DroneScanView> {
+  late TextEditingController controller;
+
+  String? get nameDrone => null;
+  @override
+  void initState() {
+    super.initState();
+
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -57,14 +73,19 @@ class _DroneScanViewState extends State<DroneScanView> {
             child: Center(
               child: Expanded(
                 child: TextButton(
-                  onPressed: () {
+                  onPressed: () async {
                     String tHelp = DroneScanView.dronesF[index].name;
                     //DroneListView.addDrone();
-                    setState(() {
-                      //add drone from scan list to both viewing list, add page and the side bar
-                      DroneListView.pullDrone(tHelp);
-                      DroneListAdd.test(tHelp);
-                    });
+                    String? tryPass = await passDialog();
+                    if (tryPass != null &&
+                        tryPass.isNotEmpty &&
+                        tryPass == '1234') {
+                      setState(() {
+                        //add drone from scan list to both viewing list, add page and the side bar
+                        DroneListView.pullDrone(tHelp);
+                        DroneListAdd.pullDrone(tHelp);
+                      });
+                    }
                     //force refresh for the page
                     Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => DroneAddPage()));
@@ -85,5 +106,44 @@ class _DroneScanViewState extends State<DroneScanView> {
       },
       itemCount: DroneScanView.dronesF.length,
     );
+  }
+
+  Future<String?> openDialog() => showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+              title: Text('drone name'),
+              content: TextField(
+                autofocus: true,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(hintText: 'Enter drone'),
+                controller: controller,
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Submit'),
+                  onPressed: submit,
+                )
+              ]));
+
+  Future<String?> passDialog() => showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+              title: Text('Password'),
+              content: TextField(
+                autofocus: true,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(hintText: 'Enter password'),
+                controller: controller,
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Submit'),
+                  onPressed: submit,
+                )
+              ]));
+  void submit() {
+    Navigator.of(context).pop(controller.text);
+
+    controller.clear();
   }
 }
