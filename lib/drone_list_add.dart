@@ -6,17 +6,16 @@ import 'drawer_header.dart';
 
 import 'drone.dart';
 
-class DroneListView extends StatefulWidget {
-  DroneListView({super.key});
+class DroneListAdd extends StatefulWidget {
+  DroneListAdd({super.key});
   static List<Drone> drones = [];
   @override
-  State<DroneListView> createState() => _DroneListViewState();
+  State<DroneListAdd> createState() => _DroneListAddState();
 
   static void addDrone() {
     drones.add(Drone(name: _randomString(20)));
   }
 
-  //pull drone from scan list and add it to side bar list
   static void pullDrone(String nameDrone) {
     drones.add(Drone(name: nameDrone));
   }
@@ -31,7 +30,7 @@ class DroneListView extends StatefulWidget {
 }
 ///////////////////////////////////////////////
 
-class _DroneListViewState extends State<DroneListView> {
+class _DroneListAddState extends State<DroneListAdd> {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -52,13 +51,13 @@ class _DroneListViewState extends State<DroneListView> {
               child: Expanded(
                 child: TextButton(
                   onPressed: () {
-                    print("Drone ${DroneListView.drones[index].name} selected");
+                    print("Drone ${DroneListAdd.drones[index].name} selected");
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => MapDrawing()));
                   },
                   child: Text(
-                    DroneListView.drones[index].name,
-                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                    DroneListAdd.drones[index].name,
+                    style: TextStyle(color: Color.fromARGB(255, 63, 22, 211)),
                     // Color.fromARGB(255, 30, 0, 139)),
                   ),
                   //style: TextStyle(color: Colors.white),
@@ -68,7 +67,7 @@ class _DroneListViewState extends State<DroneListView> {
           ),
         );
       },
-      itemCount: DroneListView.drones.length,
+      itemCount: DroneListAdd.drones.length,
     );
   }
 }
