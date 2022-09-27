@@ -1,3 +1,4 @@
+import 'package:drone_dev/drone_add_page.dart';
 import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
 import 'map_live.dart';
@@ -60,11 +61,13 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             textColor: Colors.white,
             title: const Text('Add Drone'),
             onTap: () {
-              setState(() {
-                DroneListView.addDrone();
-                //droneListView.addDrone();
-              });
-
+              //setState(() {
+              //  DroneListView.addDrone();
+              //  //droneListView.addDrone();
+              // });
+              //changed that when add drone is pressed it takes the user to add drone page and will no longer just add a random drone
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => DroneAddPage()));
               /*
               Navigator.push(
                 context,
