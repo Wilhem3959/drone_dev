@@ -19,6 +19,22 @@ class DroneAddPage extends StatefulWidget {
 }
 
 class _DroneAddPageState extends State<DroneAddPage> {
+  late TextEditingController controller;
+
+  String? get nameDrone => null;
+  @override
+  void initState() {
+    super.initState();
+
+    controller = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,12 +93,21 @@ class _DroneAddPageState extends State<DroneAddPage> {
                   const Icon(Icons.add, color: Color.fromARGB(255, 255, 0, 0)),
               textColor: Color.fromARGB(255, 62, 2, 230),
               title: const Text('Add Drone'),
-              onTap: () {
-                setState(() {
-                  //need to add to both lists for add page and side bar
-                  DroneListView.addDrone();
-                  DroneListAdd.addDrone();
-                });
+              onTap: () async {
+                //get drone from text field
+                String? newDronen = await openDialog();
+                //String tryAgain = await openDialog() ?? "";
+                //need to add to both lists for add page and side bar
+                if (newDronen == null || newDronen.isEmpty) {
+                } else {
+                  //DroneListView.addDrone();
+                  setState(() {
+                    DroneListView.pullDrone(newDronen);
+                    DroneListAdd.test(newDronen);
+                  });
+
+                  //DroneListAdd.addDrone();
+                }
               },
             ),
           ],
@@ -90,5 +115,27 @@ class _DroneAddPageState extends State<DroneAddPage> {
       ),
       drawer: const HeaderDrawer(),
     );
+  }
+
+  Future<String?> openDialog() => showDialog(
+      context: context,
+      builder: (BuildContext context) => AlertDialog(
+              title: Text('drone name'),
+              content: TextField(
+                autofocus: true,
+                // ignore: prefer_const_constructors
+                decoration: InputDecoration(hintText: 'Enter drone'),
+                controller: controller,
+              ),
+              actions: [
+                TextButton(
+                  child: Text('Submit'),
+                  onPressed: submit,
+                )
+              ]));
+  void submit() {
+    Navigator.of(context).pop(controller.text);
+
+    //controller.clear();
   }
 }
