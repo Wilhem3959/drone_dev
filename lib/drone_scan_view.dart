@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
 import 'drone_list_add.dart';
 import 'drone_add_page.dart';
+import 'drone_list_manage.dart';
 import 'dart:math';
 
 import '../drone.dart';
@@ -84,6 +85,7 @@ class _DroneScanViewState extends State<DroneScanView> {
                         //add drone from scan list to both viewing list, add page and the side bar
                         DroneListView.pullDrone(tHelp);
                         DroneListAdd.pullDrone(tHelp);
+                        DroneListManage.pullDrone(tHelp);
                       });
                     }
                     //force refresh for the page

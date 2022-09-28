@@ -1,6 +1,7 @@
 import 'package:drone_dev/drone_add_page.dart';
 import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
+import 'drone_manage_page.dart';
 import 'map_live.dart';
 
 class HeaderDrawer extends StatefulWidget {
@@ -84,8 +85,10 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             onTap: () {
               // Update the state of the app
               // ...
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => DroneManagePage()));
               // Then close the drawer
-              Navigator.pop(context);
+              //Navigator.pop(context);
             },
           ),
           ListTile(

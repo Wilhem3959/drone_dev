@@ -32,22 +32,6 @@ class DroneListAdd extends StatefulWidget {
 ///////////////////////////////////////////////
 
 class _DroneListAddState extends State<DroneListAdd> {
-  late TextEditingController controller;
-
-  String? get nameDrone => null;
-  @override
-  void initState() {
-    super.initState();
-
-    controller = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
@@ -67,16 +51,18 @@ class _DroneListAddState extends State<DroneListAdd> {
             child: Center(
               child: Expanded(
                 child: TextButton(
-                  onPressed: () async {
-                    String? areSure = await delDialog();
-                    var answer = areSure!.toLowerCase();
-                    if (answer == 'yes' || answer == 'y') {
-                      DroneListAdd.drones.removeAt(index);
-                      DroneListView.drones.removeAt(index);
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DroneAddPage()));
-                      setState(() {});
-                    }
+                  onPressed: () {
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => MapDrawing()));
+                    //String? areSure = await delDialog();
+                    //var answer = areSure!.toLowerCase();
+                    //if (answer == 'yes' || answer == 'y') {
+                    //  DroneListAdd.drones.removeAt(index);
+                    //  DroneListView.drones.removeAt(index);
+                    //  Navigator.of(context).push(MaterialPageRoute(
+                    //      builder: (context) => DroneAddPage()));
+                    //  setState(() {});
+                    //}
                     //print("Drone ${DroneListAdd.drones[index].name} selected");
                     //Navigator.of(context).push(
                     //   MaterialPageRoute(builder: (context) => MapDrawing()));
@@ -95,27 +81,5 @@ class _DroneListAddState extends State<DroneListAdd> {
       },
       itemCount: DroneListAdd.drones.length,
     );
-  }
-
-  Future<String?> delDialog() => showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-              title: Text('Are you sure you want to Delete this Drone'),
-              content: TextField(
-                autofocus: true,
-                // ignore: prefer_const_constructors
-                decoration: InputDecoration(hintText: 'Enter Yes to proceed'),
-                controller: controller,
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Submit'),
-                  onPressed: submit,
-                )
-              ]));
-  void submit() {
-    Navigator.of(context).pop(controller.text);
-
-    controller.clear();
   }
 }
