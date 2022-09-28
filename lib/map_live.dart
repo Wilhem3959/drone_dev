@@ -46,6 +46,7 @@ class _MapLiveState extends State<MapLive> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
                 title: const Text('Autonomous Reconnaissance Drone'),
@@ -60,7 +61,6 @@ class _MapLiveState extends State<MapLive> {
                     Container(
                       width: constraints.maxWidth / 2,
                       height: constraints.maxHeight,
-                      color: Colors.red,
                       alignment: Alignment.topRight,
                       child: const MapScreen(),
                     ),

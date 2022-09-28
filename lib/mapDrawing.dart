@@ -26,6 +26,7 @@ class _MapDrawingState extends State<MapDrawing> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
           appBar: AppBar(
               title: const Text('Autonomous Reconnaissance Drone'),
