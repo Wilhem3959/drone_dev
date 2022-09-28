@@ -3,7 +3,6 @@ import 'drone_list_view.dart';
 import 'drone_list_add.dart';
 import 'drone_add_page.dart';
 import 'dart:math';
-
 import '../drone.dart';
 
 //created a new DroneListView to show a random list to be a scanning list

@@ -1,7 +1,5 @@
-// ignore: file_names
 import 'package:drone_dev/drone_settings_page.dart';
 import 'package:flutter/material.dart';
-
 import 'drawer_header.dart';
 import 'drone_settings_drawer.dart';
 import 'map.dart';
