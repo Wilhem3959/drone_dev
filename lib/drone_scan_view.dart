@@ -1,5 +1,3 @@
-import 'package:drone_dev/mapDrawing.dart';
-import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'drone_list_view.dart';
 import 'drone_list_add.dart';
@@ -95,7 +93,7 @@ class _DroneScanViewState extends State<DroneScanView> {
 
                   child: Text(
                     DroneScanView.dronesF[index].name,
-                    style: TextStyle(color: Color.fromARGB(255, 30, 0, 139)),
+                    style: const TextStyle(color: Colors.black),
                   ),
                   //style: TextStyle(color: Colors.white),
                 ),

@@ -1,9 +1,6 @@
 import 'package:drone_dev/mapDrawing.dart';
-import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'drawer_header.dart';
-
 import 'drone.dart';
 
 class DroneListAdd extends StatefulWidget {
@@ -57,7 +54,7 @@ class _DroneListAddState extends State<DroneListAdd> {
                   },
                   child: Text(
                     DroneListAdd.drones[index].name,
-                    style: TextStyle(color: Color.fromARGB(255, 63, 22, 211)),
+                    style: const TextStyle(color: Colors.black),
                     // Color.fromARGB(255, 30, 0, 139)),
                   ),
                   //style: TextStyle(color: Colors.white),
