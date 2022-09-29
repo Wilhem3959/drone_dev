@@ -1,11 +1,7 @@
 import 'package:drone_dev/mapDrawing.dart';
-import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'drawer_header.dart';
-import 'drone_list_view.dart';
 import 'drone.dart';
-import 'drone_add_page.dart';
 
 class DroneListAdd extends StatefulWidget {
   DroneListAdd({super.key});

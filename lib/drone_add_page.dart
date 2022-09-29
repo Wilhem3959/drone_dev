@@ -5,9 +5,6 @@ import 'drone_scan_view.dart';
 import 'drone_list_add.dart';
 import 'drone_list_manage.dart';
 import 'drawer_header.dart';
-import 'dart:io';
-import 'dart:math';
-import 'drone.dart';
 
 //looks like a add wifi page
 //scan for drones or add manual drone

@@ -1,14 +1,7 @@
 // a page that is to add a drone to our current list of drones
 import 'package:flutter/material.dart';
-import 'drone_list_view.dart';
-import 'drone_scan_view.dart';
-import 'drone_list_add.dart';
 import 'drawer_header.dart';
 import 'drone_list_manage.dart';
-import 'dart:io';
-import 'dart:math';
-import 'drone.dart';
-
 //looks like a add wifi page
 //scan for drones or add manual drone
 //List<Drone> dronesF = [];
