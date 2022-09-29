@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'drone_list_view.dart';
-import 'map_live.dart';
 
 class EndDrawer extends StatefulWidget {
   const EndDrawer({super.key});
@@ -11,6 +11,10 @@ class EndDrawer extends StatefulWidget {
 }
 
 class _EndDrawerState extends State<EndDrawer> {
+  bool lockAppSwitchVal = true;
+  bool fingerprintSwitchVal = false;
+  bool changePassSwitchVal = true;
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -33,54 +37,53 @@ class _EndDrawerState extends State<EndDrawer> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Text(
-                  " Drones Available",
+                  " Drones Settings",
                   style: TextStyle(color: Colors.white, fontSize: 20),
-                  textAlign: TextAlign.left,
+                  textAlign: TextAlign.right,
                 ),
               ],
             ),
           ),
-          const Divider(
-            thickness: 3,
-            color: Color(0xFFA9A9A9),
-          ),
-          DroneListView(),
-          const Divider(
-            thickness: 3,
-            color: Color(0xFFA9A9A9),
-          ),
           ListTile(
-            leading: const Icon(Icons.add, color: Colors.white),
+            leading: const Icon(MdiIcons.bomb, color: Colors.white),
+            title: const Text("EID Detection sensor"),
             textColor: Colors.white,
-            title: const Text('Add Drone'),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const MapLive()),
-              );
-            },
+            trailing: Switch(
+                value: lockAppSwitchVal,
+                activeColor: const Color(0xFFD4AF37),
+                onChanged: (val) {
+                  setState(() {
+                    lockAppSwitchVal = val;
+                  });
+                }),
           ),
+          const Divider(),
           ListTile(
-            leading: const Icon(Icons.manage_accounts, color: Colors.white),
+            leading: const Icon(MdiIcons.accessPointOff, color: Colors.white),
+            title: const Text("Radio Jammer"),
             textColor: Colors.white,
-            title: const Text('Manage Drone'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
+            trailing: Switch(
+                value: fingerprintSwitchVal,
+                activeColor: const Color(0xFFD4AF37),
+                onChanged: (val) {
+                  setState(() {
+                    fingerprintSwitchVal = val;
+                  });
+                }),
           ),
+          const Divider(),
           ListTile(
-            title: const Text('App Settings'),
+            leading: const Icon(Icons.bolt, color: Colors.white),
+            title: const Text("Electronic magnetic pulse"),
             textColor: Colors.white,
-            leading: const Icon(Icons.settings, color: Colors.white),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
+            trailing: Switch(
+                value: changePassSwitchVal,
+                activeColor: const Color(0xFFD4AF37),
+                onChanged: (val) {
+                  setState(() {
+                    changePassSwitchVal = val;
+                  });
+                }),
           ),
         ],
       ),
