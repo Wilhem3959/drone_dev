@@ -1,10 +1,10 @@
-import 'package:drone_dev/mapDrawing.dart';
+import 'package:drone_dev/map_drawing.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'drone.dart';
 
 class DroneListView extends StatefulWidget {
-  DroneListView({super.key});
+  const DroneListView({super.key});
   static List<Drone> drones = [];
   @override
   State<DroneListView> createState() => _DroneListViewState();
@@ -50,15 +50,13 @@ class _DroneListViewState extends State<DroneListView> {
                 Expanded(
                   child: TextButton(
                     onPressed: () {
-                      print(
-                          "Drone ${DroneListView.drones[index].name} selected");
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MapDrawing()));
+                          builder: (context) => const MapDrawing()));
                     },
                     child: Text(
                       DroneListView.drones[index].name,
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 255, 255, 255)),
                       // Color.fromARGB(255, 30, 0, 139)),
                     ),
                     //style: TextStyle(color: Colors.white),

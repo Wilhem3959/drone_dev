@@ -35,7 +35,7 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             color: const Color(0x0000ffff),
             width: double.infinity,
             height: 70,
-            padding: EdgeInsets.only(top: 20.0),
+            padding: const EdgeInsets.only(top: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
@@ -51,7 +51,7 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             thickness: 3,
             color: Color(0xFFA9A9A9),
           ),
-          DroneListView(),
+          const DroneListView(),
           const Divider(
             thickness: 3,
             color: Color(0xFFA9A9A9),
@@ -66,8 +66,8 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
               //  //droneListView.addDrone();
               // });
               //changed that when add drone is pressed it takes the user to add drone page and will no longer just add a random drone
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => DroneAddPage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const DroneAddPage()));
               /*
               Navigator.push(
                 context,
@@ -84,8 +84,8 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             onTap: () {
               // Update the state of the app
               // ...
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => DroneManagePage()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const DroneManagePage()));
               // Then close the drawer
               //Navigator.pop(context);
             },

@@ -62,7 +62,7 @@ class _MapDrawingState extends State<MapDrawing> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            DroneSettingsPage()), //This will go to the settings
+                            const DroneSettingsPage()), //This will go to the settings
                   );
                 } else if (index == 1) {
                   Navigator.push(

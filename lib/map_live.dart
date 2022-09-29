@@ -39,7 +39,7 @@ class _MapLiveState extends State<MapLive> {
         setState(() {});
       });
     } else {
-      print("NO any camera found");
+      //add fail safe
     }
   }
 
@@ -64,7 +64,7 @@ class _MapLiveState extends State<MapLive> {
                       alignment: Alignment.topRight,
                       child: const MapScreen(),
                     ),
-                    Container(
+                    SizedBox(
                         height: constraints.maxHeight,
                         width: constraints.maxWidth / 2,
                         child: controller == null

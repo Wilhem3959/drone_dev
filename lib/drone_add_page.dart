@@ -53,7 +53,7 @@ class _DroneAddPageState extends State<DroneAddPage> {
                 thickness: null,
                 color: Color(0xFF3D3D3D),
               ),
-              DroneListAdd(),
+              const DroneListAdd(),
               const Divider(
                 thickness: null,
                 color: Color(0xFF3D3D3D),
@@ -109,7 +109,7 @@ class _DroneAddPageState extends State<DroneAddPage> {
   Future<String?> openDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('drone name'),
+              title: const Text('drone name'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -118,15 +118,15 @@ class _DroneAddPageState extends State<DroneAddPage> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
 
   Future<String?> passDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('Password'),
+              title: const Text('Password'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -135,8 +135,8 @@ class _DroneAddPageState extends State<DroneAddPage> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
   void submit() {

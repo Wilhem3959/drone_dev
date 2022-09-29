@@ -5,7 +5,7 @@ import 'drone_manage_page.dart';
 import 'drone_list_add.dart';
 
 class DroneListManage extends StatefulWidget {
-  DroneListManage({super.key});
+  const DroneListManage({super.key});
   static List<Drone> drones = [];
   @override
   State<DroneListManage> createState() => _DroneListManageState();
@@ -60,8 +60,9 @@ class _DroneListManageState extends State<DroneListManage> {
                         DroneListAdd.drones.removeAt(index);
                         DroneListView.drones.removeAt(index);
                         DroneListManage.drones.removeAt(index);
+                        // ignore: use_build_context_synchronously
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => DroneManagePage()));
+                            builder: (context) => const DroneManagePage()));
                         setState(() {});
                       }
                       //print("Drone ${DroneListAdd.drones[index].name} selected");
@@ -70,7 +71,8 @@ class _DroneListManageState extends State<DroneListManage> {
                     },
                     child: Text(
                       DroneListManage.drones[index].name,
-                      style: TextStyle(color: Color.fromARGB(255, 63, 22, 211)),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 63, 22, 211)),
                       // Color.fromARGB(255, 30, 0, 139)),
                     ),
                     //style: TextStyle(color: Colors.white),
@@ -88,7 +90,7 @@ class _DroneListManageState extends State<DroneListManage> {
   Future<String?> delDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('Are you sure you want to Delete this Drone'),
+              title: const Text('Are you sure you want to Delete this Drone'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -97,8 +99,8 @@ class _DroneListManageState extends State<DroneListManage> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
   void submit() {

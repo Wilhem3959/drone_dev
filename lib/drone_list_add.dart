@@ -1,10 +1,10 @@
-import 'package:drone_dev/mapDrawing.dart';
+import 'package:drone_dev/map_drawing.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'drone.dart';
 
 class DroneListAdd extends StatefulWidget {
-  DroneListAdd({super.key});
+  const DroneListAdd({super.key});
   static List<Drone> drones = [];
   @override
   State<DroneListAdd> createState() => _DroneListAddState();
@@ -50,7 +50,7 @@ class _DroneListAddState extends State<DroneListAdd> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MapDrawing()));
+                          builder: (context) => const MapDrawing()));
                       //String? areSure = await delDialog();
                       //var answer = areSure!.toLowerCase();
                       //if (answer == 'yes' || answer == 'y') {

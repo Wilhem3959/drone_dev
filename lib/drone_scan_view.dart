@@ -87,8 +87,9 @@ class _DroneScanViewState extends State<DroneScanView> {
                         });
                       }
                       //force refresh for the page
+                      // ignore: use_build_context_synchronously
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DroneAddPage()));
+                          builder: (context) => const DroneAddPage()));
                       setState(() {});
                       //DroneListAdd.addDrone();
                     },
@@ -112,7 +113,7 @@ class _DroneScanViewState extends State<DroneScanView> {
   Future<String?> passDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('Password'),
+              title: const Text('Password'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -121,8 +122,8 @@ class _DroneScanViewState extends State<DroneScanView> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
   void submit() {

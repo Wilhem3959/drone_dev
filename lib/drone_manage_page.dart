@@ -35,7 +35,7 @@ class _DroneManagePageState extends State<DroneManagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Autonomous Reconnaissance Drone'),
+        title: const Text('Autonomous Reconnaissance Drone'),
         backgroundColor: const Color(0xFF0437F2),
       ),
       drawer: const HeaderDrawer(),
@@ -56,7 +56,7 @@ class _DroneManagePageState extends State<DroneManagePage> {
                 thickness: null,
                 color: Color(0xFF3D3D3D),
               ),
-              DroneListManage(),
+              const DroneListManage(),
               const Divider(
                 thickness: null,
                 color: Color(0xFF3D3D3D),
@@ -71,7 +71,7 @@ class _DroneManagePageState extends State<DroneManagePage> {
   Future<String?> openDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('drone name'),
+              title: const Text('drone name'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -80,15 +80,15 @@ class _DroneManagePageState extends State<DroneManagePage> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
 
   Future<String?> passDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-              title: Text('Password'),
+              title: const Text('Password'),
               content: TextField(
                 autofocus: true,
                 // ignore: prefer_const_constructors
@@ -97,8 +97,8 @@ class _DroneManagePageState extends State<DroneManagePage> {
               ),
               actions: [
                 TextButton(
-                  child: Text('Submit'),
                   onPressed: submit,
+                  child: const Text('Submit'),
                 )
               ]));
   void submit() {
