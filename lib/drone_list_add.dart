@@ -48,9 +48,20 @@ class _DroneListAddState extends State<DroneListAdd> {
               child: Expanded(
                 child: TextButton(
                   onPressed: () {
-                    print("Drone ${DroneListAdd.drones[index].name} selected");
                     Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => MapDrawing()));
+                    //String? areSure = await delDialog();
+                    //var answer = areSure!.toLowerCase();
+                    //if (answer == 'yes' || answer == 'y') {
+                    //  DroneListAdd.drones.removeAt(index);
+                    //  DroneListView.drones.removeAt(index);
+                    //  Navigator.of(context).push(MaterialPageRoute(
+                    //      builder: (context) => DroneAddPage()));
+                    //  setState(() {});
+                    //}
+                    //print("Drone ${DroneListAdd.drones[index].name} selected");
+                    //Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (context) => MapDrawing()));
                   },
                   child: Text(
                     DroneListAdd.drones[index].name,

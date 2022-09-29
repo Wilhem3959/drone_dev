@@ -1,9 +1,6 @@
 import 'package:drone_dev/mapDrawing.dart';
-import 'package:drone_dev/map_live.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'drawer_header.dart';
-
 import 'drone.dart';
 
 class DroneListView extends StatefulWidget {
