@@ -69,36 +69,38 @@ class _DroneScanViewState extends State<DroneScanView> {
             height: 50,
             color: const Color(0x0000ffff),
             child: Center(
-              child: Expanded(
-                child: TextButton(
-                  onPressed: () async {
-                    String tHelp = DroneScanView.dronesF[index].name;
-                    //DroneListView.addDrone();
-                    String? tryPass = await passDialog();
-                    if (tryPass != null &&
-                        tryPass.isNotEmpty &&
-                        tryPass == '1234') {
-                      setState(() {
-                        //add drone from scan list to both viewing list, add page and the side bar
-                        DroneListView.pullDrone(tHelp);
-                        DroneListAdd.pullDrone(tHelp);
-                        DroneListManage.pullDrone(tHelp);
-                      });
-                    }
-                    //force refresh for the page
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => DroneAddPage()));
-                    setState(() {});
-                    //DroneListAdd.addDrone();
-                  },
+              child: Row(children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () async {
+                      String tHelp = DroneScanView.dronesF[index].name;
+                      //DroneListView.addDrone();
+                      String? tryPass = await passDialog();
+                      if (tryPass != null &&
+                          tryPass.isNotEmpty &&
+                          tryPass == '1234') {
+                        setState(() {
+                          //add drone from scan list to both viewing list, add page and the side bar
+                          DroneListView.pullDrone(tHelp);
+                          DroneListAdd.pullDrone(tHelp);
+                          DroneListManage.pullDrone(tHelp);
+                        });
+                      }
+                      //force refresh for the page
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => DroneAddPage()));
+                      setState(() {});
+                      //DroneListAdd.addDrone();
+                    },
 
-                  child: Text(
-                    DroneScanView.dronesF[index].name,
-                    style: const TextStyle(color: Colors.black),
+                    child: Text(
+                      DroneScanView.dronesF[index].name,
+                      style: const TextStyle(color: Colors.black),
+                    ),
+                    //style: TextStyle(color: Colors.white),
                   ),
-                  //style: TextStyle(color: Colors.white),
                 ),
-              ),
+              ]),
             ),
           ),
         );

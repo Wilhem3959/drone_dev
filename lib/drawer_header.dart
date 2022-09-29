@@ -35,7 +35,7 @@ class _HeaderDrawerState extends State<HeaderDrawer> {
             color: const Color(0x0000ffff),
             width: double.infinity,
             height: 70,
-            padding: const EdgeInsets.only(top: 20.0),
+            padding: EdgeInsets.only(top: 20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [

@@ -50,31 +50,33 @@ class _DroneListManageState extends State<DroneListManage> {
             height: 50,
             color: const Color(0x0000ffff),
             child: Center(
-              child: Expanded(
-                child: TextButton(
-                  onPressed: () async {
-                    String? areSure = await delDialog();
-                    var answer = areSure!.toLowerCase();
-                    if (answer == 'yes' || answer == 'y') {
-                      DroneListAdd.drones.removeAt(index);
-                      DroneListView.drones.removeAt(index);
-                      DroneListManage.drones.removeAt(index);
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => DroneManagePage()));
-                      setState(() {});
-                    }
-                    //print("Drone ${DroneListAdd.drones[index].name} selected");
-                    //Navigator.of(context).push(
-                    //   MaterialPageRoute(builder: (context) => MapDrawing()));
-                  },
-                  child: Text(
-                    DroneListManage.drones[index].name,
-                    style: TextStyle(color: Color.fromARGB(255, 63, 22, 211)),
-                    // Color.fromARGB(255, 30, 0, 139)),
+              child: Row(children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () async {
+                      String? areSure = await delDialog();
+                      var answer = areSure!.toLowerCase();
+                      if (answer == 'yes' || answer == 'y') {
+                        DroneListAdd.drones.removeAt(index);
+                        DroneListView.drones.removeAt(index);
+                        DroneListManage.drones.removeAt(index);
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => DroneManagePage()));
+                        setState(() {});
+                      }
+                      //print("Drone ${DroneListAdd.drones[index].name} selected");
+                      //Navigator.of(context).push(
+                      //   MaterialPageRoute(builder: (context) => MapDrawing()));
+                    },
+                    child: Text(
+                      DroneListManage.drones[index].name,
+                      style: TextStyle(color: Color.fromARGB(255, 63, 22, 211)),
+                      // Color.fromARGB(255, 30, 0, 139)),
+                    ),
+                    //style: TextStyle(color: Colors.white),
                   ),
-                  //style: TextStyle(color: Colors.white),
                 ),
-              ),
+              ]),
             ),
           ),
         );

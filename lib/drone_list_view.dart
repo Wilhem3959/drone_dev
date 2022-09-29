@@ -46,21 +46,25 @@ class _DroneListViewState extends State<DroneListView> {
             height: 50,
             color: const Color(0x0000ffff),
             child: Center(
-              child: Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    print("Drone ${DroneListView.drones[index].name} selected");
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: (context) => MapDrawing()));
-                  },
-                  child: Text(
-                    DroneListView.drones[index].name,
-                    style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
-                    // Color.fromARGB(255, 30, 0, 139)),
+              child: Row(children: [
+                Expanded(
+                  child: TextButton(
+                    onPressed: () {
+                      print(
+                          "Drone ${DroneListView.drones[index].name} selected");
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MapDrawing()));
+                    },
+                    child: Text(
+                      DroneListView.drones[index].name,
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+                      // Color.fromARGB(255, 30, 0, 139)),
+                    ),
+                    //style: TextStyle(color: Colors.white),
                   ),
-                  //style: TextStyle(color: Colors.white),
                 ),
-              ),
+              ]),
             ),
           ),
         );
