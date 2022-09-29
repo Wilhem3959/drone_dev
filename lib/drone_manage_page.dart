@@ -14,6 +14,8 @@ class DroneManagePage extends StatefulWidget {
 
 class _DroneManagePageState extends State<DroneManagePage> {
   late TextEditingController controller;
+  TextStyle headingStyle = const TextStyle(
+      fontSize: 16, fontWeight: FontWeight.w600, color: Color(0xFF0437F2));
 
   String? get nameDrone => null;
   @override
@@ -33,36 +35,36 @@ class _DroneManagePageState extends State<DroneManagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Manage Drones(remove Drones)'),
+        title: Text('Autonomous Reconnaissance Drone'),
         backgroundColor: const Color(0xFF0437F2),
       ),
-      body: Center(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          // Important: Remove any padding from the ListView.
-          padding: const EdgeInsets.only(right: 20, left: 20),
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              color: const Color(0x0000ffff),
-              width: double.infinity,
-              height: 70,
-              padding: const EdgeInsets.only(top: 20.0),
-            ),
-            const Divider(
-              thickness: 3,
-              color: Color.fromARGB(255, 0, 0, 0),
-            ),
-            DroneListManage(),
-            const Divider(
-              thickness: 3,
-              color: Color.fromARGB(255, 0, 0, 0),
-            ),
-          ],
+      drawer: const HeaderDrawer(),
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          alignment: Alignment.center,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text("Manage Drones", style: headingStyle),
+                ],
+              ),
+              const Divider(
+                thickness: null,
+                color: Color(0xFF3D3D3D),
+              ),
+              DroneListManage(),
+              const Divider(
+                thickness: null,
+                color: Color(0xFF3D3D3D),
+              ),
+            ],
+          ),
         ),
       ),
-      drawer: const HeaderDrawer(),
     );
   }
 
