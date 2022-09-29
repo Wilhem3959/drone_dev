@@ -107,24 +107,6 @@ class _DroneScanViewState extends State<DroneScanView> {
     );
   }
 
-/*
-  Future<String?> openDialog() => showDialog(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-              title: Text('drone name'),
-              content: TextField(
-                autofocus: true,
-                // ignore: prefer_const_constructors
-                decoration: InputDecoration(hintText: 'Enter drone'),
-                controller: controller,
-              ),
-              actions: [
-                TextButton(
-                  child: Text('Submit'),
-                  onPressed: submit,
-                )
-              ]));
-*/
   Future<String?> passDialog() => showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
